@@ -1,0 +1,260 @@
+<style>
+ .label {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 1px solid #dddddd;
+    line-height: 1.42857;
+    padding: 3px;
+    vertical-align: top;
+}
+
+.form-control {
+    height: 35px;
+   
+}
+</style>
+<!-- date-range-picker -->
+<script src="js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+
+
+<div class="row">
+   
+    <div class="col-md-6">
+        <div class='box box-primary'>
+            
+            <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Laporan  Toko</h3>
+
+                    <div class="pull-right box-tools">
+                    <button data-original-title="Reload" class="btn btn-success btn-sm refresh-btn" data-toggle="tooltip" title="Download" ng-click="exportData()"><i class="fa fa-download"></i></button>
+                    </div>
+            </div>
+            <div class="box-body padding">
+
+             <!-- Date range -->
+        <div class="form-group">
+            <div class="input-group input-group-sm">
+            <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+            </div>
+            <input date-range-picker class="form-control date-picker" type="text" name="rangeTglPenjualan" ng-model="rangeTglPenjualan" ng-enter="getDataByDate()"/>
+
+            <span class="input-group-btn">
+            <button class="btn btn-info btn-flat" type="button" ng-click="getDataByDate()">Go!</button>
+            </span>
+
+            </div><!-- /.input group -->
+        </div><!-- /.form group -->
+        
+        <!--
+        <p>Filter: <input class="form-control" type="text" ng-model="filter" /></p>-->
+
+        
+
+          
+
+        <div class="col-xs-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Sales</span>
+                        <select class="form-control" ng-model="selected_sales">
+                          <option value="0">Semua</option>
+                          <option ng-repeat='sales in allsales' value="{{sales.id}}">{{sales.sales_name}}</option>
+                        </select>
+
+                    </div>
+         </div>
+
+         <div class="col-xs-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Area</span>
+                        <select class="form-control" ng-model="selected_area">
+                          <option value="0">Semua</option>
+                          <option ng-repeat='area in allareas' value="{{area.id}}">{{area.area_name}}</option>
+                        </select>
+
+                    </div>
+        </div>
+
+        <div class="col-xs-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Toko</span>
+                        <select class="form-control" ng-model="selected_toko">
+                          <option value="0">Semua</option>
+                          <option ng-repeat='toko in alltokos' value="{{toko.id}}">{{toko.nama_toko}}</option>
+                        </select>
+
+                    </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="col-xs-4">
+            <div class="input-group input-group-sm">
+            <span class="input-group-addon">Pocket</span>
+            <select class="form-control" ng-model="selected_pocket">
+            <option value="0">Semua</option>
+            <option ng-repeat='pocket in strAllPocket' value="{{pocket.id}}">{{pocket.name}}</option>
+            </select>
+
+            </div>
+         </div>
+
+      
+
+        <br><br><br><br>
+        <div id="exportJualharian">
+            <b> Total Omset : {{totalOmset | currency:"":0}}</b><br>
+            <table  ng-table="tableParams"  id="maintable" class="table table-bordered table-striped table-hover pointer">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Sales</th>
+                    <th>Nama Toko</th>
+                    <th>Pocket</th>
+                    <th>Tanggal</th>
+		    <th>Jam</th>
+                    <th>Omset</th>
+		    <th>Opsi</th>
+          
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="e in data" ng-click="showItemPenjualan($index)">
+                    <td>{{e.laporan_id}}</td>
+                    <td>{{e.sales_name}}</td>
+                    <td>{{e.nama_toko}}</td>
+                    <td>Pocket {{e.pocket_id}}</td>
+                    <td>{{e.tanggal}}</td>
+                    <td>{{e.checkin_hours}}</td>
+		    <td class="text-right">{{e.omset | currency:"":0}}</td>
+                    <td width='5%'>
+                           <div class="pull-right box-tools">
+                                            <div class="btn-group">
+                                                <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                                <ul class="dropdown-menu pull-right" role="menu">
+                                                    <li><a ng-click="delete($index)" ng-confirm-click="Would you like to delete this item?" >Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                         <!-- tools box -->
+                     
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+
+     <div class="col-md-6">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+            <h3 class="box-title">Detail Item  </h3>
+             <div class="pull-right box-tools">
+                <button data-original-title="Reload" class="btn btn-success btn-sm refresh-btn" data-toggle="tooltip" title="Download" ng-click="exportDataItem()"><i class="fa fa-download"></i></button>
+            </div>
+            </div>
+            <div class="box-body padding">
+
+            <div id="exportJualharianitem">
+            <div class="col-sm-6 invoice-col">
+            <b>Transaksi ID : </b> {{JualharianSelected.laporan_id}}<br/>
+            <b>Tanggal : </b> {{JualharianSelected.tanggal}}<br/>
+            <b>Toko : </b> {{JualharianSelected.nama_toko}}<br/>
+            <b>Sales : </b> {{JualharianSelected.sales_name}}<br/>
+            <b>Pocket : </b> {{JualharianSelected.pocket_id}}<br/>
+            </div><!-- /.col -->
+            <div class="col-sm-3 invoice-col">
+                 <b>Omset : </b><br>
+                 <b>Keterangan : </b><br>
+            </div><!-- /.col -->
+            <div class="col-sm-3 invoice-col text-right">
+                 <b></b>{{JualharianSelected.omset |currency:"Rp ":0}} <br>
+                 <b></b>{{JualharianSelected.laporan_keterangan}}<br>
+            </div><!-- /.col -->
+            <br>
+            <br>
+            <table id="maintable" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Item</th>
+                        <th>Harga Satuan</th>
+                        <th>Jumlah</th>
+                        <th>Opsi</th>
+                      </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="i in daftarItemPenjualan">
+                        <td>{{i.id}}</td>
+                        <td>{{i.product_name}}</td>
+                        <td class="text-right">{{i.harga_satuan | currency:"":0}}</td>
+                        <td class="text-right">{{i.jumlah}}</td>
+                        <td width='5%'>
+                           <div class="pull-right box-tools">
+                                            <div class="btn-group">
+                                                <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                                <ul class="dropdown-menu pull-right" role="menu">
+                                                     <li><a ng-click="edititem($index)">Edit</a></li>
+                                                <li><a ng-click="delitem($index)" ng-confirm-click="Would you like to delete this item?" >Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                         <!-- tools box -->
+                     
+                        </td>
+                    </tr>
+                </tbody>
+
+                 
+            </table>
+        </div>
+
+        </div>
+
+    </div>
+    </div>
+
+</div>
+
+
+
+
+ <modal title="Edit Form" visible="showModal">
+    <form role="form">
+      <div class="form-group">
+        <label for="email">Barang</label>
+        <input name='cost' id='cost' placeholder="Nama Item" type="text" class="form-control"value='{{selecteditem.product_name}}' disabled>
+      </div>
+      <div class="form-group">
+        <label for="jumlah">Jumlah</label>
+         <input name='jumlah' id='jumlah' ng-model="selecteditem.jumlah" size="4" ng:required ng:validate="integer" placeholder="jumlah" type="text" class="form-control text-right" ng-enterori="changeFocustoCost()" ng-keypress="callFunction($event)">
+      </div>
+      <div class="form-group">
+        <label for="cost">Harga Satuan</label>
+         <input name='cost' id='cost' ng-model="selecteditem.harga_satuan" ng:required ng:validate="number" size="6" placeholder="cost" type="text" class="form-control text-right" ng-enter="addPenjualanEnter()" disabled>
+      </div>
+
+    
+      <button type="submit" class="btn btn-info" ng-click='simpanitem()'>Submit</button>
+    </form>
+  </modal>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,158 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="left-side sidebar-offcanvas">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <image src="img/brand.png", 'class' = "img-circle" 'alt' = "User Image"/>
+            </div>
+            <div class="pull-left info">
+                <p>
+                     {{name}}
+                </p>
+
+                <a href="#/logout"> <i class="fa fa-circle text-success"></i> Sign Out</a>
+            </div>
+        </div>
+        
+         <br>
+        <ul class="menu" ng-model="items"  ng-init="
+        items= [{
+            name: 'Home',
+            route:'dashboard',
+            icon :'fa-home'
+        },
+         {
+            name: 'Laporan Penjualan Toko',
+            route:'laporantoko',
+            icon :'fa-bar-chart-o',
+            subItems: [
+                {name: 'Format Web',route:'laporantoko',icon :'fa-angle-double-right'},
+                {name: 'Format Excel',route:'laporantoko/laporantokoexcel',icon :'fa-angle-double-right'}
+            ]
+
+        },
+	{
+            name: 'Map',
+            route:'map',
+            icon :'fa-globe',
+            subItems: [
+                {name: 'Toko',route:'map',icon :'fa-angle-double-right'},
+                {name: 'Sales',route:'map/mapsales',icon :'fa-angle-double-right'}
+            ]
+        },
+        {
+            name: 'Toko',
+            route:'toko',
+            icon :'fa-home'
+        },
+
+        
+        {
+            name: 'Sales',
+            route:'sales',
+            icon :'fa-user'
+        },
+        
+        {
+            name: 'User Management',
+            route:'user',
+            icon :'fa-user-md'
+        },
+        {
+            name: 'Master Data',
+            route:'produk',
+            icon :'fa-book',
+            subItems: [
+                {name: 'Produk',route:'product',icon :'fa-angle-double-right'},
+                {name: 'Area',route:'area',icon :'fa-angle-double-right'}
+            ]
+        }]
+
+        ">
+        <li class="treeview2" ng-repeat="item in items" ng-click="showChilds($index)">
+            <a href="#/{{item.route}}">
+                <i class="fa {{item.icon}}"></i> <span>{{item.name}}</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview2-menu">
+                <li ng-repeat="subItem in item.subItems">
+                    <a href="#/{{subItem.route}}">
+                   <i class="fa {{subItem.icon}}"></i>  <span>{{subItem.name}}</span>
+                </a>
+                </li>
+                
+            </ul>
+
+        </li>
+    </ul>
+
+
+
+
+    </section>
+</aside>
+
+
+<style type="text/css">
+
+.sidebar > .menu > li > .treeview2-menu {
+    background: none repeat scroll 0 0 #f9f9f9;
+    margin: 0 1px;
+}
+.sidebar > .menu > li {
+    border-bottom: 1px solid #dbdbdb;
+    border-top: 1px solid #fff;
+}
+.sidebar .sidebar-menu > li {
+    margin: 0;
+    padding: 0;
+}
+
+
+.sidebar .menu{
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar .menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar .menu > li {
+  margin: 0;
+  padding: 0;
+}
+.sidebar .menu > li > a {
+  padding: 12px 5px 12px 15px;
+  display: block;
+}
+.sidebar .menu > li > a > .fa,
+.sidebar .menu > li > a > .glyphicon,
+.sidebar .menu > li > a > .ion {
+  width: 20px;
+}
+.sidebar .menu .treeview2-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar .menu .treeview2-menu > li {
+  margin: 0;
+}
+.sidebar .menu .treeview2-menu > li > a {
+  padding: 5px 5px 5px 15px;
+  display: block;
+  font-size: 10px;
+  margin: 0px 10px;
+}
+.sidebar .menu .treeview2-menu > li > a > .fa,
+.sidebar .menu .treeview-menu > li > a > .glyphicon,
+.sidebar .menu .treeview-menu > li > a > .ion {
+  width: 20px;
+}
+
+</style>

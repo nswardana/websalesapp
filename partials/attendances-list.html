@@ -1,0 +1,77 @@
+
+            <div ng-include src="'partials/sidebar.html'"></div>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Attendance
+                        <small>{{event.name}}</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+<div class="row">
+    <div class="col-md-12">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+                 <h3 class="box-title text-light-blue">{{message}}</h3>
+            </div>
+            <div class="box-body">
+                <form novalidate="novalidate" class="form-horizontal">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label" for="inputFirstName">ID</label>
+                            <input type="text" class="form-control" id="inputUserName" ng-model="att.id"/>
+                        </div>
+                    </div>
+                </div>
+            <div class="box-footer">
+                <button ng-click="submitAttendance()" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+<!-- Map box -->
+<div class="box box-primary">
+    <div class="box-header">
+        <i class="fa fa-users"></i>
+        <h3 class="box-title">
+            {{event.name}} : Attendance List
+        </h3>
+    </div>
+    <div class="box-body no-padding">
+        <div class="table-responsive">
+            <!-- .table - Uses sparkline charts-->
+            <table class="table table-striped">
+                <tr>
+                    <th>Nama</th>
+                    <th>No Kad</th>
+                    <th>Alamat</th>
+                </tr>
+                <tr ng-repeat="user in data">
+                    <td><a ng-click="editUser(user.id)">{{user.username}}</a></td>
+                    <td><div id="sparkline-1">{{user.no_kad}}</div></td>
+                    <td>{{user.alamat}}</td>
+                </tr>
+            </table><!-- /.table -->
+        </div>
+    </div><!-- /.box-body-->
+    <div class="box-footer">
+    </div>
+</div>
+<!-- /.box -->
+
+ </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+

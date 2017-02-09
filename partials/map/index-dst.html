@@ -1,0 +1,177 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class='box box-primary'>
+            <div class="box-body padding">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">Area</span>
+                        <select class="form-control" ng-model="selected_area">
+                          <option value="0">Tampilkan semua</option>
+                          <option ng-repeat='area in allareas' value="{{area.id}}">{{area.area_name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">Sales</span>
+                        <select class="form-control" ng-model="selected_sales">
+                          <option value="0">Tampilkan semua</option>
+                          <option ng-repeat='sales in allsales' value="{{sales.id}}">{{sales.sales_name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-3">
+                    <div class="input-group">
+                         <span class="input-group-btn">
+                        <button class="btn btn-info btn-flat" type="button" ng-click="loadmap()">Go!</button>
+                        </span>
+                    </div>
+                </div>
+
+
+                <!-- 
+                 <div class="col-xs-3">
+                    <span class="input-group-btn">
+                    <button class="btn btn-info btn-flat" type="button" ng-click="getDataCheckIn()">Go!</button>
+                    </span>
+
+                </div> -->
+
+            </div>
+            <br>
+                
+          
+          <ui-gmap-google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    dragging="map.dragging"
+                    draggable="true"
+                    control="map.control">
+
+            <ui-gmap-markers models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'" fit='true' options="'options'">
+                <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                    <div ng-non-bindable>
+                        <div class="small-box">
+                              <h4>
+                                <i class="fa fa-home text-success"></i> {{ nama_toko}} {{ no_toko}}
+                             </h4>
+                            <div class="inner user-panel">
+                                    <p><i class="fa fa-user text-success"></i> {{sales_name}} </p>
+                                    <p><i class="fa fa-list text-success"></i> {{sales_hp}} </p>
+                            </div>
+                            <div class="icon">
+                                    <i class="ion ion-ios7-pricetag-outline"></i>
+                            </div>
+                                <a href="#toko/viewtoko/{{toko_id}}" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                        </div>
+                        <p class="muted">{{m.keterangan}}</p>
+                    </div>
+
+
+                </ui-gmap-windows>
+            </ui-gmap-markers>
+        </ui-gmap-google-map>
+
+    
+           
+            </div>
+
+    </div>
+    </div>
+</div>
+
+<style type="text/css">
+.angular-google-map-container { height: 400px; }
+
+.angular-google-map-container {
+    width: 100%;
+    height: 600px;
+}
+
+/* fix for Twitter Bootstrap handling of responsive images */
+.angular-google-map img {
+    max-width: none;
+}
+
+.angular-google-map {
+    top: 80px;
+
+}
+
+.shrink {
+    font-size: 8;
+}
+
+.true:hover {
+    background-color: lightgreen;
+}
+
+.false:hover {
+    background-color: lightpink;
+}
+
+.marker-labels {
+    color: red;
+    background-color: white;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+/** FIX for Bootstrap and Google Maps Info window styes problem **/
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+  max-width: none;
+}
+
+.custom-info-window{
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 20px;
+    /*border: 1px solid white;*/
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 15px;
+    margin-left: -130px;
+}
+.custom-info-window a{
+    color: white;
+    text-decoration: underline;
+}
+.custom-info-window:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: rgba(0,0,0,0.5) transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    left: 118px;
+}
+
+.small-box > .small-box-footer:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.small-box:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+
+
+</style>

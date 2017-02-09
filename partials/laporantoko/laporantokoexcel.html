@@ -1,0 +1,152 @@
+<style>
+ .label {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: 1px solid #dddddd;
+    line-height: 1.42857;
+    padding: 3px;
+    vertical-align: top;
+}
+
+.form-control {
+    height: 35px;
+   
+}
+.rotate {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+</style>
+<!-- date-range-picker -->
+<script src="js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+
+<div class="row">
+   
+    <div class="col-md-12">
+        <div class='box box-primary'>
+            
+           <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Laporan  Toko</h3>
+
+                    <div class="pull-right box-tools">
+                    <button data-original-title="Reload" class="btn btn-success btn-sm refresh-btn" data-toggle="tooltip" title="Download" ng-click="exportData()"><i class="fa fa-download"></i></button>
+                    </div>
+            </div>
+            <div class="box-body padding">
+ 
+        <!--
+        <p>Filter: <input class="form-control" type="text" ng-model="filter" /></p>-->
+        
+        <div class="col-xs-3">
+            <div class="input-group input-group-sm">
+            <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+            </div>
+            <input date-range-picker class="form-control date-picker" type="text" name="rangeTglPenjualan" ng-model="rangeTglPenjualan" ng-enter="getDataByDate()"/>
+             </div><!-- /.input group -->
+
+         </div>
+
+        <div class="col-xs-2">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Sales</span>
+                       <!--
+                        <select class="form-control" ng-model="selected_sales">
+                          <option value="0">Semua</option>
+                          <option ng-repeat='sales in allsales' value="{{sales.id}}">{{sales.sales_name}}</option>
+                        </select>
+                        -->
+                     
+
+                        <select class="form-control" ng-model="selected_sales"  ng-options="sales.sales_name for sales in allsales"><option value="0">Semua</option></select>
+
+
+
+                    </div>
+         </div>
+
+         <div class="col-xs-2">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Area</span>
+                        <select class="form-control" ng-model="selected_area" ng-options="area.area_name for area in allareas"><option value="0">Semua</option></select>
+
+
+                    </div>
+        </div>
+
+
+
+        <div class="col-xs-3">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">Toko</span>
+                        
+                        <select class="form-control" ng-model="selected_toko" ng-options="toko.nama_toko for toko in alltokos"><option value="0">Semua</option></select>
+
+                    </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div class="input-group input-group-sm">
+            <select class="form-control" ng-model="selected_pocket">
+            <option value="0">Semua</option>
+            <option ng-repeat='pocket in strAllPocket' value="{{pocket.id}}">{{pocket.name}}</option>
+            </select>
+
+                           <span class="input-group-btn">
+            <button class="btn btn-info btn-flat" type="button" ng-click="loadbypost()">Go!</button>
+            </span>
+
+
+            </div>
+         </div>
+
+      
+
+        <br><br><br><br> 
+    
+
+        <div id="exportJualharian">
+            <p class="dl-horizontal">
+                <dt><h4>Toko : {{selected_toko.nama_toko}}</h4></dt>
+                <dt><h4>Sales : {{selected_sales.sales_name}}</h4></dt>
+                <dt><h4>Area : {{selected_area.area_name}}</h4></dt>
+                <dt><h4>Pocket : {{selected_pocket}}</h4></dt>
+                <dt><h4>Total Omset : {{InttotalOmset}}</h4></dt>
+            </p>                            
+            <table  ng-table="tableParams"  id="maintable" class="table table-bordered table-striped table-hover pointer">
+            <tbody>
+                <tr ng-repeat="e in data">
+                    <th >{{$index}}</td>
+                    <td>{{e.nama_toko}}</td>
+                    <td>{{e.no_toko}}</td>
+                    <td>{{e.alamat}}</td>
+                    
+                    <td>{{e.sales_name}}</td>
+                    <td>{{e.area}}</td>
+                    <td>Pocket {{e.pocket}}</td>
+                    <td>{{e.tanggal}}</td>
+                    <td>{{e.omset}}</td>
+                    <td ng-repeat='a in e.item'> {{a}}</td>
+                    
+                </tr>
+            </tbody>
+            </table>
+       
+        </div>
+
+    </div>
+    </div>
+
+
+
+    </div>
+    </div>
+
+</div>

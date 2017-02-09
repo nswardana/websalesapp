@@ -1,0 +1,64 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Daftar product</h3>
+            </div>
+
+            <div class="box-body padding">
+
+            <!-- 
+            <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-pagination></div>-->
+
+
+            <p>Filter: <input class="form-control" type="text" ng-model="filter" /></p>
+
+             <table ng-table="tableParams"  class="table table-striped table-bordered table-condensed">
+                   <tr ng-repeat="product in data">
+                    <td data-title="'#'" >
+                        {{$index+1}}
+                    </td>
+                    <td data-title="'Nama'" sortable="'nama_lengkap'" filter="{ 'nama_lengkap': 'text' }">
+                        {{product.nama_lengkap}}
+                    </td>
+                    <td data-title="'Alamat'" >
+                        {{product.alamat}}
+                    </td>
+                    <td data-title="'NIP'" >
+                        {{product.nip}}
+                    </td>
+                    <td data-title="'Tanggal Lahir'" >
+                        {{product.tempat_lahir}}/{{product.tgl_lahir}}
+                    </td>
+                    <td data-title="'No HP'">
+                        {{product.no_hp}}
+                    </td>
+                    <td data-title="'Jabatan'" >
+                        {{product.jabatan_id}}
+                    </td>
+                    <td data-title="'Option'" >
+                                    <div class="pull-right box-tools">
+                                        <div class="btn-group">
+                                            <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li><a ng-click="edit(item.id)">Edit</a></li>
+                                                <li><a ng-click="delete($index)" ng-confirm-click="Would you like to delete this item?" >Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                    </td>
+                   
+                </tr>
+            </table>
+
+           
+    
+            </div>
+
+    </div>
+    </div>
+</div>
+
+
+

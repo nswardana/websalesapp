@@ -1,0 +1,145 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Tambah Toko</h3>
+            </div>
+            <div class="box-body">
+                <form novalidate="novalidate" class="form-horizontal">
+                     <div class="row">
+                        <div class="col-xs-8">
+                            <label class="control-label" for="nama_toko">Nama </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="nama_toko" name="nama_toko" ng-model="toko.nama_toko" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="control-label" for="no_toko">No Toko </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="no_toko" name="no_toko" ng-model="toko.no_toko" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                     <div class="control-group">
+                        <label class="control-label" for="alamat">Alamat</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="alamat" name="alamat" ng-model="toko.alamat" value='' ng-initial/>
+                        </div>
+                    </div>
+
+
+
+                   <div class="row">
+                        <div class="col-xs-8">
+                            <label class="control-label" for="pemilik">Pemilik </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="pemilik" name="pemilik" ng-model="toko.pemilik" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="control-label" for="no_telp">No Telp </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="no_telp" name="no_telp" ng-model="toko.no_telp" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                   <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="keterangan">Keterangan </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="keterangan" name="keterangan" ng-model="toko.keterangan" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="longitude">Longitude </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="longitude" name="longitude" ng-model="toko.longitude" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                         <div class="col-xs-6">
+                            <label class="control-label" for="Latitude">Latitude </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="latitude" name="latitude" ng-model="toko.latitude" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="sales">Sales</label>
+                            <div class="controls">
+                                <select class="form-control" id="sales_id" name="sales_id"  ng-model="toko.sales_id" ng-initial value=''>
+                                <option ng-repeat="item in allsales" value='{{item.id}}' >{{item.sales_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                       
+
+                        <div class="col-xs-6">
+                            <label class="control-label" for="sales">Pocket</label>
+                            <div class="controls">
+                                <select class="form-control" id="pocket_id" name="pocket_id"  ng-model="toko.pocket_id" ng-initial value=''>
+                                <option ng-repeat="pocket in strAllPocket" value='{{pocket.id}}' >{{pocket.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                       
+                       
+                    </div>
+                    
+
+
+
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="toko_image">Toko</label>
+                            <div class="controls">
+
+                            <img ng-src="images/toko/{{toko.toko_image}}" type="{{image2.file.type}}"/>
+                            <input id="inputImage2" 
+                            file-model="myFile"
+                            type="file" 
+                            accept="image/*" 
+                            image="image2" 
+                            resize-max-height="300"
+                            resize-max-width="250"
+                            resize-quality="0.7" />
+                           
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img ng-show="image2" ng-src="{{image2.url}}" type="{{image2.file.type}}"/>
+                        </div>
+                    </div>
+
+
+
+
+
+                     
+            </div>
+            <div class="box-footer">
+                <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+              <!-- user-creation.html: -->
+                <button ng-click="create()" class="btn btn-primary">Simpan</button>
+            </div>
+            </div>
+            
+        </div>
+    </form>
+    
+    </form>
+</div>
+

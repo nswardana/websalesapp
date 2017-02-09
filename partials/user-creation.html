@@ -1,0 +1,198 @@
+<div ng-include src="'partials/sidebar.html'"></div>
+
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Ahli
+            <small>Add</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-users"></i>Home</a></li>
+            <li class="active">Ahli Add</li>
+        </ol>
+    </section>
+<!-- Main content -->
+<section class="content">
+
+<div class="row">
+    <div class="col-md-6">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Add Ahli</h3>
+            </div>
+            <div class="box-body">
+                <form novalidate="novalidate" class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputFirstName">Nama Penuh</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputUserName" ng-model="user.username"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">No Kad Pengenalan</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputNo_Kad" ng-model="user.no_kad"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">No Ahli</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.no_ahli"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Bahagian</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.bahagian"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Cawangan</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.cawangan"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Jawatan</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.jawatan"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Pekerjaan</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.pekerjaan"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Alamat</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.alamat"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Bandar</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.bandar"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Negeri</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.negeri"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">POS Kod</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.poskod"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Telefon Pejabat</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.telp_pejabat"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Telefon Bimbit</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.telp_bimbit"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Telefon Rumah</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.telp_rumah"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Email</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.email"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Tarikh Lahir</label>
+                        <div class="controls">
+                             <p class="input-group">
+                              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                            </p>
+                        </div>
+                    </div>                    
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Tempat Lahir</label>
+                        <div class="controls">
+                            <input ng-model="user.tmpt_lahir" id="datemask" type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Pusat Daerah Mengundi (PDM)</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.pdm"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Hobi</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="inputLastName" ng-model="user.hobi"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Tugasan</label>
+                        <div class="controls">
+                            <select class="form-control" id="inputLastName" ng-model="user.tugasan">
+                                <option value='Rujukan'>Rujukan</option>
+                                <option value='Analisis'>Analisis</option>
+                                <option value='Susunan'>Susunan</option>
+                                <option value='Rancangan'>Rancangan</option>
+                                <option value='Operasi'>Operasi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputLastName">Kategori Buku Yang Diminati</label>
+                        <div class="controls">
+                            <select class="form-control" id="inputLastName" ng-model="user.cat_buku">
+                                <option value='Best Seller'>Best Seller</option>
+                                <option value='Biography Memoir'>Biography Memoir</option>
+                                <option value='Classics'>Classics</option>
+                                <option value='Fantasy'>Fantasy</option>
+                                <option value='Fiction'>Fiction</option>
+                                <option value='Heatlh'>Heatlh</option>
+                                <option value='Historical Fiction'>Historical Fiction</option>
+                                <option value='History'>History</option>
+                                <option value='Horror'>Horror</option>
+                                <option value='Mystery'>Mystery</option>
+                                <option value='Poetry'>Poetry</option>
+                                <option value='Romance'>Romance</option>
+                                <option value='Science Fiction'>Science Fiction</option>
+                                <option value='Self Help Psych'>Self Help Psych</option>
+                                <option value='Short Stories'>Short Stories</option>
+                                <option value='Travel'>Travel</option>
+                                <option value='Religius/Spiritual'>Religius/Spiritual</option>
+                                <option value='Just Magazines'>Just Magazines</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            <div class="box-footer">
+                <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+              <!-- user-creation.html: -->
+                <button ng-click="createNewUser()" class="btn btn-primary">Create</button>
+            </div>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+
+ </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        

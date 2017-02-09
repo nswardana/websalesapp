@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Form Toko dan Pocket</h3>
+		          <div class="pull-right box-tools">
+                    <button data-original-title="Reload" class="btn btn-success btn-sm refresh-btn" data-toggle="tooltip" title="Download" ng-click="exportData()"><i class="fa fa-download"></i></button>
+                    </div>
+
+            </div>
+
+            <div class="box-body padding">
+
+            <!-- 
+            <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-pagination></div>-->
+        <div class="row">
+        <div class="col-xs-4">
+            <div class="input-group input-group-sm">
+            <span class="input-group-addon">Filter Nama Toko</span> <input class="form-control" type="text" ng-model="filter" /> 
+        </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group input-group-sm">
+            <span class="input-group-addon">Sales</span>
+            <select class="form-control" ng-model="selected_sales">
+            <option value="0">Semua</option>
+            <option ng-repeat='sales in allsales' value="{{sales.id}}">{{sales.sales_name}}</option>
+            </select>
+
+            </div>
+         </div>
+         <div class="col-xs-2">
+            <div class="input-group input-group-sm">
+            <span class="input-group-addon">Pocket</span>
+            <select class="form-control" ng-model="selected_pocket">
+            <option value="0">Semua</option>
+            <option ng-repeat='pocket in strAllPocket' value="{{pocket.id}}">{{pocket.name}}</option>
+            </select>
+
+            </div>
+         </div>
+         <div class="col-xs-3">
+            <div class="input-group input-group-sm">
+            <span class="input-group-addon">Area</span>
+            <select class="form-control" ng-model="selected_area">
+            <option value="0">Semua</option>
+            <option ng-repeat='area in allareas' value="{{area.id}}">{{area.area_name}}</option>
+            </select>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+        
+	<div id="exportJualharian">
+        
+
+             <table ng-table="tableParams"  class="table table-striped table-bordered table-condensed">
+                   <tr ng-repeat="item in data">
+                    <td data-title="'#'" >
+                        {{$index+1}}
+                    </td>
+
+                    <td data-title="'Nama'">
+                        {{item.nama_toko}}
+                    </td>
+                    <td data-title="'No Toko'" >
+                        {{item.no_toko}}
+                    </td>
+                    <td data-title="'Sales'" sortable="'sales_name'" filter="{ 'sales_name': 'text' }">
+                        {{item.sales_name}}
+                    </td>
+                    <td data-title="'Alamat'" >
+                        {{item.alamat}}
+                    </td>
+                    <td data-title="'No Telp'" >
+                        {{item.no_telp}}
+                    </td>
+                    <td data-title="'Pemilik'" >
+                        {{item.pemilik}}
+                    </td>
+                    <td data-title="'Pocket'" >
+                        Pocket {{item.pocket_id}}
+                    </td>
+		   <td data-title="'Longitude'" >
+{{item.longitude}}
+</td>
+<td data-title="'Latitude'" >
+{{item.latitude}}
+</td>
+
+                    <td data-title="'Option'" >
+                                    <div class="pull-right box-tools">
+                                        <div class="btn-group">
+                                            <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li><a ng-click="view(item.toko_id)">View</a></li>
+                                                <li><a ng-click="edit(item.toko_id)">Edit</a></li>
+                                                <li><a confirmed-click="delete($index)" ng-confirm-click="Would you like to delete this item?" >Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                    </td>
+                   
+                </tr>
+            </table>
+           </div> <br>
+
+           
+    
+            </div>
+
+    </div>
+    </div>
+</div>

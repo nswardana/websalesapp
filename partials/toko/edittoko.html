@@ -1,0 +1,274 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class='box box-primary'>
+            <div class="box-header" style="cursor: move;">
+                    <h3 class="box-title">Edit Toko</h3>
+            </div>
+              <div class="box-body">
+                <form novalidate="novalidate" class="form-horizontal">
+                     <div class="row">
+                        <div class="col-xs-8">
+                            <label class="control-label" for="nama_toko">Nama </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="nama_toko" name="nama_toko" ng-model="toko.nama_toko" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="control-label" for="no_toko">No Toko </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="no_toko" name="no_toko" ng-model="toko.no_toko" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                     <div class="control-group">
+                        <label class="control-label" for="alamat">Alamat</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" id="alamat" name="alamat" ng-model="toko.alamat" value='' ng-initial/>
+                        </div>
+                    </div>
+
+
+
+                   <div class="row">
+                        <div class="col-xs-8">
+                            <label class="control-label" for="pemilik">Pemilik </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="pemilik" name="pemilik" ng-model="toko.pemilik" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="control-label" for="no_telp">No Telp </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="no_telp" name="no_telp" ng-model="toko.no_telp" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                   <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="keterangan">Keterangan </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="keterangan" name="keterangan" ng-model="toko.keterangan" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                      <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="longitude">Longitude </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="longitude" name="longitude" ng-model="toko.longitude" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                         <div class="col-xs-6">
+                            <label class="control-label" for="Latitude">Latitude </label>
+                            <div class="controls">
+                            <input type="text" class="form-control" id="latitude" name="latitude" ng-model="toko.latitude" value='' ng-initial/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="sales">Sales</label>
+                            <div class="controls">
+                                <select class="form-control" id="sales_id" name="sales_id"  ng-model="toko.sales_id" ng-initial value=''>
+                                <option ng-repeat="item in allsales" value='{{item.id}}' >{{item.sales_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                       
+                        <div class="col-xs-6">
+                            <label class="control-label" for="sales">Pocket</label>
+                            <div class="controls">
+                                <select class="form-control" id="pocket_id" name="pocket_id"  ng-model="toko.pocket_id" ng-initial value=''>
+                                <option ng-repeat="pocket in strAllPocket" value='{{pocket.id}}' >{{pocket.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label" for="toko_image">Toko</label>
+                            <div class="controls">
+
+                            <img ng-src="images/toko/{{toko.toko_image}}" type="{{image2.file.type}}"/>
+                            <input id="inputImage2" 
+                            file-model="myFile"
+                            type="file" 
+                            accept="image/*" 
+                            image="image2" 
+                            resize-max-height="300"
+                            resize-max-width="250"
+                            resize-quality="0.7" />
+                           
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img ng-show="image2" ng-src="{{image2.url}}" type="{{image2.file.type}}"/>
+                        </div>
+                    </div>
+
+
+
+
+
+                     
+            </div>
+            <div class="box-footer">
+                <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+              <!-- user-creation.html: -->
+                <button ng-click="edit()" class="btn btn-primary">Simpan</button>
+            </div>
+            </div>
+            
+        </div>
+    </form>
+
+     <div class="col-md-6">
+    <div class='box box-primary'>
+        
+
+<ui-gmap-google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    dragging="map.dragging"
+                    draggable="true"
+                    control="map.control">
+            <ui-gmap-marker ng-repeat="m in map.markers"  coords='m' icon='m.icon' ng-click='onMarkerClicked(m)' idkey='m.id'>
+                <ui-gmap-window  models="windows"  options="'options'" show="m.showWindow"  closeClick="'closeClick'" ng-cloak>
+                    <div ng-controller="InfoController">
+
+                        <div class="small-box bg-green">
+                              
+                                    <h3>
+                                    {{ m.nama_toko}} {{ m.no_toko}}
+                                    </h3>
+                                      <div class="inner user-panel">
+                                      <div class="pull-left image">
+                                    <img src="images/toko/{{m.toko_image}}" class="img-circle" alt="User Image" />
+                                    </div>
+                      
+                                    <p><i class="fa fa-user text-success"></i> {{m.pemilik}} </p>
+                                    <p><i class="fa fa-user text-success"></i> {{m.sales_name}} </p>
+                                    <p><i class="fa fa-envelope text-success"></i> {{m.sales_email}} </p>
+                                    <p><i class="fa fa-mobile-phone text-success"></i> {{m.sales_hp}} </p>
+                                    
+                            
+
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-ios7-pricetag-outline"></i>
+                                </div>
+                                <a href="#toko/detail" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+
+                        </div>
+
+                            <p>{{m.keterangan}} </p>
+                             <p class="muted">My marker will stay open when the window is popped up!</p>
+                        </div>
+
+
+                         
+                    </div>
+                </ui-gmap-window>
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+
+
+    </div>
+    </div>  
+
+</div>
+
+<style type="text/css">
+.angular-google-map-container { height: 400px; }
+
+.angular-google-map-container {
+    width: 100%;
+    height: 300px;
+}
+
+/* fix for Twitter Bootstrap handling of responsive images */
+.angular-google-map img {
+    max-width: none;
+}
+
+.angular-google-map {
+    top: 80px;
+
+}
+
+.shrink {
+    font-size: 8;
+}
+
+.true:hover {
+    background-color: lightgreen;
+}
+
+.false:hover {
+    background-color: lightpink;
+}
+
+.marker-labels {
+    color: red;
+    background-color: white;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+/** FIX for Bootstrap and Google Maps Info window styes problem **/
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+  max-width: none;
+}
+
+.custom-info-window{
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 20px;
+    /*border: 1px solid white;*/
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 15px;
+    margin-left: -130px;
+}
+.custom-info-window a{
+    color: white;
+    text-decoration: underline;
+}
+.custom-info-window:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: rgba(0,0,0,0.5) transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    left: 118px;
+}
+
+</style>
